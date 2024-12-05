@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CataloguePage.css';
+import { Link } from 'react-router-dom'; 
 
 const CataloguePage = () => {
   const [products, setProducts] = useState([]);
@@ -59,7 +60,6 @@ const CataloguePage = () => {
     <div className="catalogue-container">
       <h1>Catalogue des Produits</h1>
 
-     
       <div className="filters">
         <input
           type="text"
@@ -98,7 +98,6 @@ const CataloguePage = () => {
         <button onClick={() => fetchProducts()}>Appliquer les Filtres</button>
       </div>
 
-      
       {loading ? (
         <p>Chargement...</p>
       ) : error ? (
@@ -113,6 +112,7 @@ const CataloguePage = () => {
               )}
               <p>{product.description}</p>
               <p><strong>{product.price} €</strong></p>
+              <Link to={`/product/${product.id}`}>Voir les détails</Link> 
             </div>
           ))}
         </div>
