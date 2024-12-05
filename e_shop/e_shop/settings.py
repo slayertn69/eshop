@@ -39,9 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'product.apps.ProductConfig',
-    'corsheaders',
-
+    'django_filters',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5, 
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,8 +62,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'e_shop.urls'
 
+CORS_ALLOW_ALL_ORIGINS = True 
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3001",  # Adresse du frontend React
+    "http://localhost:3000",  
 ]
 
 TEMPLATES = [
